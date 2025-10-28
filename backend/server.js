@@ -1,10 +1,15 @@
 const express = require('express');
+const cors = require('cors'); // <-- thêm dòng này
 const app = express();
+const PORT = 3000;
+
 app.use(express.json());
+app.use(cors()); // <-- bật CORS cho toàn bộ request
 
-// 👉 Thêm dòng này:
+// 🔹 import routes
 const userRoutes = require('./routes/user');
-app.use('/', userRoutes);
+app.use('/', userRoutes); // <-- rất quan trọng
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
